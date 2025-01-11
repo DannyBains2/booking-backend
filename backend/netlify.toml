@@ -1,0 +1,7 @@
+[build]
+command = "echo 'No build required'"
+publish = "backend"
+
+[functions]
+directory = "backend"
+node_bundler = "esbuild"
