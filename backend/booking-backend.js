@@ -57,18 +57,18 @@ app.put('/bookings/:id', async (req, res) => {
   const { time, name, roomNumber, numberOfPeople } = req.body;
 
   // Convert camelCase to snake_case
-  const room_number = roomNumber;
-  const number_of_people = numberOfPeople;
+  // const room_number = roomNumber;
+  // const number_of_people = numberOfPeople;
 
   // Validate input
-  if (!time || !name || !room_number || !Number.isInteger(number_of_people)) {
+  if (!time || !name || !roomNumber || !Number.isInteger(numberOfPeople)) {
     return res.status(400).json({ message: 'Invalid booking data' });
   }
 
   try {
     const result = await pool.query(
       'UPDATE bookings SET time = $1, name = $2, room_number = $3, number_of_people = $4 WHERE id = $5',
-      [time, name, room_number, number_of_people, id]
+      [time, name, roomNumber, numberOfPeople, id]
     );
 
     if (result.rowCount === 0) {
